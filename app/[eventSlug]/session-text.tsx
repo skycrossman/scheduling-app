@@ -2,6 +2,7 @@ import clsx from "clsx";
 import { DateTime } from "luxon";
 import { Session } from "@/db/sessions";
 import { Location } from "@/db/locations";
+import { CONSTS } from "@/utils/constants";
 
 export function SessionText(props: {
   session: Session;
@@ -18,11 +19,11 @@ export function SessionText(props: {
             <span>
               {DateTime.fromISO(session["Start time"]).toFormat("EEEE")},{" "}
               {DateTime.fromISO(session["Start time"])
-                .setZone("America/Los_Angeles")
+                .setZone(CONSTS.TIME_ZONE)
                 .toFormat("h:mm a")}{" "}
               -{" "}
               {DateTime.fromISO(session["End time"])
-                .setZone("America/Los_Angeles")
+                .setZone(CONSTS.TIME_ZONE)
                 .toFormat("h:mm a")}
             </span>
           </div>

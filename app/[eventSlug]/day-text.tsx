@@ -8,6 +8,7 @@ import { Day } from "@/db/days";
 import { RSVP } from "@/db/rsvps";
 import { Location } from "@/db/locations";
 import { Session } from "@/db/sessions";
+import { CONSTS } from "@/utils/constants";
 
 export function DayText(props: {
   locations: Location[];
@@ -58,7 +59,7 @@ export function DayText(props: {
     <div className="flex flex-col max-w-3xl mx-auto">
       <h2 className="text-2xl font-bold w-full text-left">
         {DateTime.fromISO(day.Start)
-          .setZone("America/Los_Angeles")
+          .setZone(CONSTS.TIME_ZONE)
           .toFormat("EEEE, MMMM d")}{" "}
       </h2>
       <div className="flex flex-col divide-y divide-gray-300">

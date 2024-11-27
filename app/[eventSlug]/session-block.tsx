@@ -13,6 +13,7 @@ import { useContext, useState } from "react";
 import { CurrentUserModal } from "../modals";
 import { UserContext } from "../context";
 import { useScreenWidth } from "@/utils/hooks";
+import { CONSTS } from "@/utils/constants";
 
 export function SessionBlock(props: {
   eventName: string;
@@ -66,10 +67,10 @@ export function BookableSessionCard(props: {
 }) {
   const { numHalfHours, session, location, eventName } = props;
   const dayParam = DateTime.fromISO(session["Start time"])
-    .setZone("America/Los_Angeles")
+    .setZone(CONSTS.TIME_ZONE)
     .toFormat("MM-dd");
   const timeParam = DateTime.fromISO(session["Start time"])
-    .setZone("America/Los_Angeles")
+    .setZone(CONSTS.TIME_ZONE)
     .toFormat("HH:mm");
   const eventSlug = eventName.replace(" ", "-");
   return (
@@ -151,11 +152,11 @@ export function RealSessionCard(props: {
           <ClockIcon className="h-4 w-4" />
           <span>
             {DateTime.fromISO(session["Start time"])
-              .setZone("America/Los_Angeles")
+              .setZone(CONSTS.TIME_ZONE)
               .toFormat("h:mm a")}{" "}
             -{" "}
             {DateTime.fromISO(session["End time"])
-              .setZone("America/Los_Angeles")
+              .setZone(CONSTS.TIME_ZONE)
               .toFormat("h:mm a")}
           </span>
         </div>

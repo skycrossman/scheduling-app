@@ -14,6 +14,7 @@ import { Day } from "@/db/days";
 import { Guest } from "@/db/guests";
 import { Location } from "@/db/locations";
 import { Session } from "@/db/sessions";
+import { CONSTS } from "@/utils/constants";
 
 export function AddSessionForm(props: {
   eventName: string;
@@ -36,7 +37,7 @@ export function AddSessionForm(props: {
     : undefined;
   const initTime = initDateTime
     ? DateTime.fromJSDate(initDateTime)
-        .setZone("America/Los_Angeles")
+        .setZone(CONSTS.TIME_ZONE)
         .toFormat("h:mm a")
     : undefined;
   const [title, setTitle] = useState("");
@@ -227,7 +228,7 @@ function getAvailableStartTimes(
     t += 30 * 60 * 1000
   ) {
     const formattedTime = DateTime.fromMillis(t)
-      .setZone("America/Los_Angeles")
+      .setZone(CONSTS.TIME_ZONE)
       .toFormat("h:mm a");
     if (locationSelected) {
       const sessionNow = sortedSessions.find(
