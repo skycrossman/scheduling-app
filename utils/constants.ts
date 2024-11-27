@@ -17,4 +17,7 @@ export const CONSTS = {
   NAV_ITEMS: [
 
   ] as NavItem[],
+  TIME_ZONE: "America/New_York",
+  TIME_OFFSET: "-05:00",
+  TIME_YEAR:"2024",
 };
